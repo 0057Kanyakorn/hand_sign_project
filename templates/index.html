@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hand-to-Word Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Real-time Hand Sign Recognition</h2>
+        <img src="{{ url_for('video_feed') }}" width="640" height="480"/>
+        
+        <div class="controls">
+            <button onclick="clearText()">Clear (C)</button>
+            <button onclick="backspace()">Backspace</button>
+        </div>
+    </div>
+
+    <script>
+        function clearText(){
+            fetch('/clear_text', {method:'POST'});
+        }
+        function backspace(){
+            fetch('/backspace', {method:'POST'});
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* --- การตั้งค่าพื้นฐานและฟอนต์ (Minimal White Theme) --- */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;700&display=swap');
+
+:root {
+    --background-color: #f4f4f5; /* สีพื้นหลังขาวอมเทา (Off-white) */
+    --primary-color: #007aff;    /* สีหลักสำหรับเน้น (Apple Blue) */
+    --text-color-dark: #1c1c1e;   /* สีตัวอักษรเกือบดำ */
+    --border-color: #d1d1d6;     /* สีเส้นขอบเทาอ่อน */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans Thai', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* --- คอนเทนเนอร์หลัก --- */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    width: auto;
+}
+
+/* --- หัวข้อ --- */
+h2 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--text-color-dark);
+}
+
+/* --- วิดีโอฟีด --- */
+img {
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    box-shadow: none;
+}
+
+/* --- ส่วนควบคุม (ปุ่ม) --- */
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* --- สไตล์ปุ่มโดยรวม (ที่ใช้ร่วมกัน) --- */
+button {
+    width: 150px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--text-color-dark);
+    
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    
+    transition: all 0.2s ease;
+}
+
+/* --- กำหนด Animation แยกสำหรับปุ่มแต่ละอัน --- */
+button:first-child {
+    /* ปุ่ม Clear (C) */
+    animation: background-hue-animation 8s linear infinite;
+}
+
+button:last-child {
+    /* ปุ่ม Backspace */
+    animation: background-hue-animation 8s linear infinite;
+    animation-delay: -4s; /* ทำให้สีเริ่มต้นคนละครึ่งทางกับปุ่มแรก */
+}
+
+/* ตอนเอาเมาส์ไปชี้ */
+button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ตอนกดปุ่ม */
+button:active {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+/* --- Keyframes สำหรับ Animation (ปรับสีให้สดขึ้น) --- */
+
+@keyframes background-hue-animation {
+    0% {
+        background-color: hsl(0, 95%, 70%); /* สีเริ่มต้น (แดงสด) */
+    }
+    25% {
+        background-color: hsl(90, 95%, 70%); /* เขียวสด */
+    }
+    50% {
+        background-color: hsl(180, 95%, 70%); /* ฟ้าสด */
+    }
+    75% {
+        background-color: hsl(270, 95%, 70%); /* ม่วงสด */
+    }
+    100% {
+        background-color: hsl(360, 95%, 70%); /* กลับมาแดงสด */
+    }
+}
